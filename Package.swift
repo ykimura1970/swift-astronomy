@@ -13,7 +13,7 @@ let package = Package(
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
             name: "swift-astronomy",
-            targets: ["swift-astronomy"]),
+            targets: ["Astronomy"]),
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
