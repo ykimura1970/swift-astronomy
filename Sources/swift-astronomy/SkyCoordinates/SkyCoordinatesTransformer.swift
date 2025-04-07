@@ -480,3 +480,10 @@ extension SkyCoordinatesTransformer {
         return matrix_double3x3(rows: [row1, row2, row3])
     }
 }
+
+public extension SkyCoordinatesTransformer {
+    func makeICRSToMeanOfDateMatrix4() -> matrix_float4x4 {
+        let transformMatrix = makePrecessionMatrix() * makeFrameBiasMatrixBySecondOrder()
+        return matrix_float4x4(vector_float4(vector_float3(transformMatrix.columns.0), 0), vector_float4(vector_float3(transformMatrix.columns.1), 0), vector_float4(vector_float3(transformMatrix.columns.2), 0), vector_float4(.zero, 1))
+    }
+}
