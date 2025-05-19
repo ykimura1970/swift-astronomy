@@ -486,4 +486,9 @@ public extension SkyCoordinatesTransformer {
         let transformMatrix = makePrecessionMatrix() * makeFrameBiasMatrixBySecondOrder()
         return matrix_float4x4(vector_float4(vector_float3(transformMatrix.columns.0), 0), vector_float4(vector_float3(transformMatrix.columns.1), 0), vector_float4(vector_float3(transformMatrix.columns.2), 0), vector_float4(.zero, 1))
     }
+    
+    func makeJ2000ToMeanOfDateMatrix4() -> matrix_float4x4 {
+        let transformMatrix = makePrecessionMatrix()
+        return matrix_float4x4(vector_float4(vector_float3(transformMatrix.columns.0), 0), vector_float4(vector_float3(transformMatrix.columns.1), 0), vector_float4(vector_float3(transformMatrix.columns.2), 0), vector_float4(.zero, 1))
+    }
 }
